@@ -2,14 +2,20 @@ export default function getGeolocation() {
   return new Promise((resolve, reject) => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        (data) => {
-          const { latitude, longitude } = data.coords;
-
+        ({ coords }) => {
+          const { latitude, longitude } = coords;
           resolve({ latitude, longitude });
         },
-        reject,
-        { enableHighAccuracy: true },
+        (error) => {
+          reject(error);
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 10000,
+        },
       );
+    } else {
+      reject(new Error("Геолокация не поддерживается"));
     }
   });
 }

@@ -1,1 +1,8 @@
-console.log("Hello This is a Javascript project.");
+import Chat from "./Chat.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+  const rootEl = document.querySelector(".container");
+  const chat = new Chat(rootEl);
+
+  chat.init();
+});

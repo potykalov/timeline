@@ -2,12 +2,51 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Webpack App</title>
+    <title>Timeline</title>
     <link rel="stylesheet" href="./css/styles.css" />
     <script defer src="./js/index.js"></script>
   </head>
   <body>
-    <h1>Hello world!</h1>
-    <h2>Tip: Check your console</h2>
+    <h1>Timeline</h1>
+    <dialog class="location-dialog">
+      <form class="location-dialog__form">
+        <p>Что-то пошло не так</p>
+        <p>
+          К сожалению, нам не удалось определить ваше местоположение, пожалуйста
+          дайте разрешение на использование геолокации, либо введите текст
+          вручную.
+        </p>
+        <p>широта и долгота через запятую</p>
+        <label>
+          Широта
+          <input
+            type="number"
+            name="latitude"
+            min="-90"
+            max="90"
+            step="any"
+            required
+          />
+        </label>
+
+        <label>
+          Долгота
+          <input
+            type="number"
+            name="longitude"
+            min="-180"
+            max="180"
+            step="any"
+            required
+          />
+        </label>
+
+        <button type="submit">Подтвердить</button>
+        <button type="button" class="location-dialog__cancel">
+          Отправить без координат
+        </button>
+      </form>
+    </dialog>
+    <div class="container"></div>
   </body>
 </html>
